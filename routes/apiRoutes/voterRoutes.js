@@ -5,6 +5,7 @@ const inputCheck = require('../../utils/inputCheck');
 
 //GET
 router.get('/voters', (req,res) => {
+    console.log("Hello World");
     const sql = `SELECT * FROM voters ORDER BY last_name`;
 
     db.query(sql, (err,rows) => {
@@ -37,6 +38,7 @@ router.get('/voter/:id', (req,res) => {
 
 //POST
 router.post('/voter', ({body},res) => {
+
     const errors = inputCheck(body, 'first_name' , 'last_name', 'email');
     if (errors) {
         res.status(400).json({ error: errors });
